@@ -1,0 +1,78 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake Website Detector</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f8;
+      text-align: center;
+      padding: 50px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>🔐 Fake Website Detector</h2>
+    <input type="text" id="url" placeholder="Enter website URL">
+    <br>
+    <button onclick="checkWebsite()">Check</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function checkWebsite() {
+      let url = document.getElementById("url").value;
+      let result = document.getElementById("result");
+
+      if (url === "") {
+        result.innerHTML = "⚠️ Please enter a URL";
+        result.style.color = "orange";
+        return;
+      }
+
+      // Basic checks (prototype logic)
+      if (!url.startsWith("https://")) {
+        result.innerHTML = "❌ Unsafe Website (No HTTPS)";
+        result.style.color = "red";
+      } 
+      else if (url.includes("login") || url.includes("verify") || url.includes("secure-update")) {
+        result.innerHTML = "⚠️ Suspicious Website (Phishing Risk)";
+        result.style.color = "orange";
+      } 
+      else {
+        result.innerHTML = "✅ Likely Safe Website";
+        result.style.color = "green";
+      }
+    }
+  </script>
+
+</body>
+</html> ( code)
